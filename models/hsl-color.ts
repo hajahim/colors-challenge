@@ -1,4 +1,4 @@
-import { Color } from './color';
+import { Color, ColorType } from './color';
 
 interface HSLColorProperty {
     hue: number;
@@ -7,7 +7,7 @@ interface HSLColorProperty {
 }
 
 export class HSLColor implements Color<HSLColorProperty> {
-    type: string = 'hsl';
+    type: ColorType = ColorType.HSL;
     composition: HSLColorProperty = {
         hue: 0,
         saturation: 0,

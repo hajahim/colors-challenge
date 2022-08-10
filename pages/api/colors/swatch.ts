@@ -17,7 +17,7 @@ type Data = {
  *         description: operation suceed
  */
 export default function handler(
-    req: NextApiRequest,
+    _req: NextApiRequest,
     res: NextApiResponse<Data>,
 ) {
     res.status(200).json({ name: 'John Doe' });

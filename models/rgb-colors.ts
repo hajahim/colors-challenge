@@ -1,5 +1,5 @@
 import { BinaryColor } from './binary-color';
-import { Color } from './color';
+import { Color, ColorType } from './color';
 
 interface RGBColorProperty<ValueType> {
     red: ValueType;
@@ -8,7 +8,7 @@ interface RGBColorProperty<ValueType> {
 }
 
 export class RGBColor implements Color<RGBColorProperty<BinaryColor>> {
-    type: string = 'rgb';
+    type: ColorType = ColorType.RBG;
     composition: RGBColorProperty<BinaryColor> = {
         red: new BinaryColor(0),
         green: new BinaryColor(0),
