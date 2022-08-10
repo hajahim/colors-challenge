@@ -1,9 +1,9 @@
 export interface Color<ColorComposition> {
-    type: string;
+    type: ColorType;
     composition: ColorComposition;
 }
 
 export enum ColorType {
-    RBG = 'rgb',
+    RGB = 'rgb',
     HSL = 'hsl',
 }

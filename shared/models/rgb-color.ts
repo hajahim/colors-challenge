@@ -1,17 +1,17 @@
-import { BinaryColor } from './binary-color';
+import { RangedNumber } from './ranged-number';
 import { Color, ColorType } from './color';
 
-interface RGBColorProperty<ValueType> {
-    red: ValueType;
-    green: ValueType;
-    blue: ValueType;
+interface RGBColorProperty {
+    red: RangedNumber<0, 255>;
+    green: RangedNumber<0, 255>;
+    blue: RangedNumber<0, 255>;
 }
 
-export class RGBColor implements Color<RGBColorProperty<BinaryColor>> {
-    type: ColorType = ColorType.RBG;
-    composition: RGBColorProperty<BinaryColor> = {
-        red: new BinaryColor(0),
-        green: new BinaryColor(0),
-        blue: new BinaryColor(0),
+export class RGBColor implements Color<RGBColorProperty> {
+    type: ColorType = ColorType.RGB;
+    composition: RGBColorProperty = {
+        red: 0,
+        green: 0,
+        blue: 0,
     };
 }

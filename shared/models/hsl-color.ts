@@ -1,9 +1,10 @@
 import { Color, ColorType } from './color';
+import { RangedNumber } from './ranged-number';
 
 interface HSLColorProperty {
-    hue: number;
-    saturation: number;
-    lightness: number;
+    hue: RangedNumber<0, 360>;
+    saturation: RangedNumber<0, 100>;
+    lightness: RangedNumber<0, 100>;
 }
 
 export class HSLColor implements Color<HSLColorProperty> {
