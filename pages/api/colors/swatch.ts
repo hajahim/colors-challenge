@@ -5,6 +5,17 @@ type Data = {
     name: string
 }
 
+/**
+ * @swagger
+ * /api/colors:
+ *   get:
+ *     description: Returns colors swatch randomly
+ *     tags:
+ *       - colors
+ *     responses:
+ *       200:
+ *         description: operation suceed
+ */
 export default function handler(
     req: NextApiRequest,
     res: NextApiResponse<Data>,

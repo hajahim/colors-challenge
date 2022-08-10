@@ -14,7 +14,8 @@ export const getStaticProps: GetStaticProps = async () => {
         definition: {
             openapi: '3.0.0',
             info: {
-                title: 'Colors API Endpoint',
+                title: 'Colors challenge',
+                description: 'The colors challenge API description',
                 version: '0.1.0',
             },
         },
