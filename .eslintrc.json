@@ -16,7 +16,9 @@
             "ignorePackages",
             {
                 "js": "never",
-                "ts": "never"
+                "ts": "never",
+                "jsx": "never",
+                "tsx": "never"
             }
         ],
         "@typescript-eslint/naming-convention": [

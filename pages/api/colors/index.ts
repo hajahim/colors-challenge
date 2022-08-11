@@ -2,7 +2,7 @@
 import { Container } from 'inversify';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import 'reflect-metadata';
-import { Color, ColorType } from '../../../shared/models/color';
+import { IColor, ColorType } from '../../../shared/models/color';
 import { IColorGeneratorService } from '../../../shared/services/color-generator-service';
 import { numberRandomFromRange } from '../../../shared/utils/random';
 import { providers } from '../../../temp/colorRegisteredProvider';
@@ -14,7 +14,7 @@ Array.from(providers).forEach(([key, value]) => {
     colorGeneratorContainer.bind<IColorGeneratorService>(key).to(value);
 });
 
-function generateColor(): Color<unknown> {
+function generateColor(): IColor<unknown> {
     const colorTypes = Object.values(ColorType);
     const randomIndex = numberRandomFromRange(0, colorTypes.length - 1);
     const colorGeneratorService = colorGeneratorContainer.get<IColorGeneratorService>(colorTypes[randomIndex]);
@@ -34,9 +34,9 @@ function generateColor(): Color<unknown> {
  */
 export default function handler(
     _req: NextApiRequest,
-    res: NextApiResponse<Array<Color<unknown>>>,
+    res: NextApiResponse<Array<IColor<unknown>>>,
 ) {
-    const colors: Array<Color<unknown>> = [];
+    const colors: Array<IColor<unknown>> = [];
     const colorsLength = process.env.COLOR_TO_GENERATE ?? 5;
     // eslint-disable-next-line no-plusplus
     for (let iterator = 0; iterator < colorsLength; iterator++) {
