@@ -1,40 +1,18 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { Container, LazyServiceIdentifer } from 'inversify';
+import { Container } from 'inversify';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import 'reflect-metadata';
 import { Color, ColorType } from '../../../shared/models/color';
-import { HSLColorProvider } from '../../../shared/providers/hsl-color-provider';
-import { RGBColorProvider } from '../../../shared/providers/rgb-color-provider';
 import { IColorGeneratorService } from '../../../shared/services/color-generator-service';
 import { numberRandomFromRange } from '../../../shared/utils/random';
-
-interface ProviderItem {
-    symbol: string;
-    instance: any;
-}
-
-interface ProviderItemRecord {
-    [key: string]: ProviderItem
-}
+import { providers } from '../../../temp/colorRegisteredProvider';
 
 const colorGeneratorContainer = new Container();
 
-// suscribe color provider here
-const COLOR_PROVIDERS: ProviderItemRecord = {
-    [ColorType.HSL]: {
-        symbol: ColorType.HSL,
-        instance: HSLColorProvider,
-    },
-    [ColorType.RGB]: {
-        symbol: ColorType.RGB,
-        instance: RGBColorProvider,
-    },
-};
-
-for (const providerIndex in COLOR_PROVIDERS) {
-    const provider: ProviderItem = COLOR_PROVIDERS[providerIndex];
-    colorGeneratorContainer.bind<IColorGeneratorService>(provider.symbol).to(provider.instance);
-}
+// register provider list for colors
+Array.from(providers).forEach(([key, value]) => {
+    colorGeneratorContainer.bind<IColorGeneratorService>(key).to(value);
+});
 
 function generateColor(): Color<unknown> {
     const colorTypes = Object.values(ColorType);
