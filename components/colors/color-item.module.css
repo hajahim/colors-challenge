@@ -1,0 +1,12 @@
+.ColorItem {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.ColorItem .Viewer {
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+    height: 30px;
+    width: 30px;
+}

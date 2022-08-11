@@ -1,5 +1,5 @@
-import { Color } from '../models/color';
+import { IColor } from '../models/color';
 
 export abstract class IColorGeneratorService {
-    abstract generateColor(): Color<unknown>;
+    abstract generateColor(): IColor<unknown>;
 }
