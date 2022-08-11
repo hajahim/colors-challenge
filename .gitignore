@@ -6,7 +6,7 @@
 .pnp.js
 
 # generated provider subscription
-/temp/colorRegisteredProvider.ts
+/temp/colorRegistered.ts
 
 # testing
 /coverage
