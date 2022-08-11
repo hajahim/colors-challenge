@@ -1,11 +1,10 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { Container } from 'inversify';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import 'reflect-metadata';
 import { IColor } from '../../../shared/models/color';
 import { IColorGeneratorService } from '../../../shared/services/color-generator-service';
 import { numberRandomFromRange } from '../../../shared/utils/random';
-import { providers } from '../../../temp/colorRegisteredProvider';
+import { providers } from '../../../temp/colorRegistered';
 
 const colorGeneratorContainer = new Container();
 
@@ -30,7 +29,7 @@ function generateColor(): IColor<unknown> {
  *       - colors
  *     responses:
  *       200:
- *         description: operation suceed
+ *         description: list of colors
  */
 export default function handler(
     _req: NextApiRequest,

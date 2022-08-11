@@ -8,7 +8,7 @@ interface RGBColorProperty {
     blue: RangedNumber<0, 255>;
 }
 
-export class RGBColor implements IColor<RGBColorProperty> {
+export class RgbColor implements IColor<RGBColorProperty> {
     type: ColorType = ColorType.RGB;
     composition: RGBColorProperty = {
         red: numberRandomFromRange(0, 255),

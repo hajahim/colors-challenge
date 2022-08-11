@@ -1,32 +1,35 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Context
+
+Colors challenge project, with Colors API and display them to frontend
+
+## Project Setup
 
 First, run the development server:
-
+1. create .env.local in root folder
+2. append those value to the .env.local
 ```bash
-npm run dev
+COLOR_TO_GENERATE=5
+NEXT_PUBLIC_API_URL=http://localhost:3000/api
 ```
+3. Run **npm run dev** to make the local up
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) on your browser to see color swatch Frontend display.  
+Open [http://localhost:3000/api-documentation](http://localhost:3000/api-documentation) on your browser to see API documentation.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Howto
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Color space creation
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+The project setup followed the design paradigm [coding by convention](https://en.wikipedia.org/wiki/Convention_over_configuration)
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Create the color model inside folder **/shared/models**
+1. Adding new entry value on the enum ColorType inside **/shared/models/color.ts**
+2. If you want the model to be used to generate color swatch, the naming should be **[ColorType]-color.ts** ( for example hsl-color.ts, rbg-color.ts )
+3. The color model should implement color interface from **/models/color**
+4. To define new color's own property, you should create an interface that describe the attribute and pass it to the **color interface generic type IColor<T>**
+5. Create the color provider inside folder **/shared/providers**, it should implements **IColorGeneratorService** from **shared/services/color-generator-service.ts**
+6. To be registered, the color provider name should contain **[ColorType]-color-provider.ts**
+7. Stop the current worker and run **npm run dev** again
+8. All good the new color will be used to generate color swatch

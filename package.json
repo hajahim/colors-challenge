@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "register:color:providers": "ts-node scripts/register-color-provider.ts --watch",
-    "dev": "npm run register:color:providers && next dev",
-    "build": "npm run register:color:providers && next build",
+    "register:color": "ts-node scripts/register-color.ts",
+    "dev": "npm run register:color && next dev",
+    "build": "npm run register:color && next build",
     "start": "next start",
     "lint": "next lint"
   },
