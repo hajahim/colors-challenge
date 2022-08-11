@@ -2,7 +2,7 @@
 import { Container } from 'inversify';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import 'reflect-metadata';
-import { IColor, ColorType } from '../../../shared/models/color';
+import { IColor } from '../../../shared/models/color';
 import { IColorGeneratorService } from '../../../shared/services/color-generator-service';
 import { numberRandomFromRange } from '../../../shared/utils/random';
 import { providers } from '../../../temp/colorRegisteredProvider';
@@ -15,7 +15,7 @@ Array.from(providers).forEach(([key, value]) => {
 });
 
 function generateColor(): IColor<unknown> {
-    const colorTypes = Object.values(ColorType);
+    const colorTypes = Array.from(providers.keys());
     const randomIndex = numberRandomFromRange(0, colorTypes.length - 1);
     const colorGeneratorService = colorGeneratorContainer.get<IColorGeneratorService>(colorTypes[randomIndex]);
     return colorGeneratorService.generateColor();
