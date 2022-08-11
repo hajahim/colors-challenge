@@ -7,4 +7,5 @@ export interface IColor<ColorComposition> {
 export enum ColorType {
     RGB = 'rgb',
     HSL = 'hsl',
+    HEX = 'hex',
 }

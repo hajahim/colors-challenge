@@ -2,15 +2,15 @@ import { numberRandomFromRange } from '../utils/random';
 import { IColor, ColorType } from './color';
 import { RangedNumber } from './ranged-number';
 
-interface HSLColorProperty {
+interface HslColorProperty {
     hue: RangedNumber<0, 360>;
     saturation: RangedNumber<0, 100>;
     lightness: RangedNumber<0, 100>;
 }
 
-export class HSLColor implements IColor<HSLColorProperty> {
+export class HslColor implements IColor<HslColorProperty> {
     type: ColorType = ColorType.HSL;
-    composition: HSLColorProperty = {
+    composition: HslColorProperty = {
         hue: numberRandomFromRange(0, 360),
         saturation: numberRandomFromRange(0, 100),
         lightness: numberRandomFromRange(0, 100),
