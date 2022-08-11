@@ -13,7 +13,8 @@ First, run the development server:
 COLOR_TO_GENERATE=5
 NEXT_PUBLIC_API_URL=http://localhost:3000/api
 ```
-3. Run **npm run dev** to make the local up
+3. append those value to the .env.local
+4. Run **npm i** at the root of the project
 
 Open [http://localhost:3000](http://localhost:3000) on your browser to see color swatch Frontend display.  
 Open [http://localhost:3000/api-documentation](http://localhost:3000/api-documentation) on your browser to see API documentation.
