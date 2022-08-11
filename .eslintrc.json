@@ -16,7 +16,9 @@
             "ignorePackages",
             {
                 "js": "never",
-                "ts": "never"
+                "ts": "never",
+                "jsx": "never",
+                "tsx": "never"
             }
         ],
         "@typescript-eslint/naming-convention": [
@@ -52,7 +54,7 @@
                 "parameters": 1,
                 "body": 1
             },
-            "Function Expression": {
+            "FunctionExpression": {
                 "parameters": 1,
                 "body": 1
             },
